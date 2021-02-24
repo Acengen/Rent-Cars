@@ -1,0 +1,12 @@
+.navbar {
+    a {
+        text-decoration: none;
+        color: rgb(10, 86, 173);
+        margin-right: 10px;
+        font-weight: bold;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+<div class="overlay">
+  <form *ngIf="vehicle" (ngSubmit)="editCar(f)" #f="ngForm">
+    <span routerLink="/">X</span>
+    <label>Car Brand
+      <input class="form-control" type="text" name="brand" placeholder="car brand" [(ngModel)]="vehicle.brand" required>
+    </label>
+    <label>Construction year
+      <input class="form-control" type="text" name="constructionYear" placeholder="year of construction" [(ngModel)]="vehicle.constructionYear" required>
+    </label>
+    <label>Vehicle Model
+      <input class="form-control" type="text" name="model" placeholder="model" [(ngModel)]="vehicle.model" required>
+    </label>
+    <label>Vehicle Type
+      <select class="form-control" name="vType" [(ngModel)]="defaultType">
+        <option *ngFor="let vTp of vType" [value]="vTp">{{vTp}}</option>
+      </select>
+    </label>
+    <label>Vehicle URL
+      <input class="form-control" type="text" name="picture" placeholder="picture(..copy url)" [(ngModel)]="vehicle.picture" required>
+    </label>
+    <label>Vehicles in a store
+      <input class="form-control" type="number" name="count" placeholder="count" [(ngModel)]="vehicle.count" required>
+    </label>
+    <label>Vehicle seats
+      <input class="form-control" type="number" name="numberOfSeats" placeholder="number of seats" [(ngModel)]="vehicle.numberOfSeats" required>
+    </label>
+   <label>Vehicle price/day
+    <input class="form-control" type="number" name="pricePerDay" placeholder="Price/Day" [(ngModel)]="vehicle.pricePerDay" required>
+   </label>
+    <button [disabled]="!f.valid" type="submit" class="btn btn-dark">Update</button>
+  </form>
+</div>

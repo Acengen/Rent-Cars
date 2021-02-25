@@ -32,6 +32,16 @@ namespace rentacarAPI.Controllers
             return Ok(vehiclerepo);
         }
 
+        //Get vehicle
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetVehicle(int id)
+        {
+            var vehicle = await _repo.GetVehicle(id);
+
+            return Ok(vehicle);
+        }
+
+
         //Create Vehicle
         [HttpPost("createVehicle")]
         public async Task<IActionResult> CreateVehicle(Vehicle vehicle)

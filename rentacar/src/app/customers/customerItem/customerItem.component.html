@@ -1,0 +1,9 @@
+<div class="card">
+  <div class="card-body">
+    <h4>{{customer.fullName}}</h4>
+    <p><span>email:</span> {{customer.emailAddress}}</p>
+    <p><span>phone:</span> {{customer.phoneNumber}}</p>
+    <button [routerLink]="['edit',customer.customerId]" class="btn btn-sm btn-dark">edit</button>
+    <button class="btn btn-sm btn-dark mx-2">x</button>
+  </div>
+</div>

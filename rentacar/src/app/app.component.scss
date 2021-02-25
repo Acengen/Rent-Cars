@@ -1,12 +1,18 @@
-.navbar {
-    a {
-        text-decoration: none;
-        color: rgb(10, 86, 173);
-        margin-right: 10px;
-        font-weight: bold;
+.container-fluid {
+  font-family: "Open Sans", sans-serif;
+}
+.navbar-my {
+  padding: 20px 0px;
+  a {
+    text-decoration: none;
+    color: rgb(10, 86, 173);
+    margin-right: 10px;
+    transition: 0.3s ease-in-out;
+    font-weight: bold;
+    text-decoration: underline;
 
-        &:hover {
-            text-decoration: underline;
-        }
+    &:hover {
+      color: black;
     }
+  }
 }

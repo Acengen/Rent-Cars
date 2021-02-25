@@ -1,3 +1,19 @@
-<p>
-  customers works!
-</p>
+<div class="customers">
+  <div class="customers_header">
+    <p>List of customers</p>
+  </div>
+  <div class="customers_btns">
+    <button (click)="isActive=!isActive" class="btn btn-sm btn-success">+ add new</button>
+  </div>
+  <div *ngIf="isActive" class="customer_add"> 
+    <form (ngSubmit)="addCustomer(f)" #f="ngForm">
+      <p>Create Form</p>
+       <input class="form-control" type="text" name="fullName" placeholder="full name" ngModel required>
+       <input class="form-control" type="text" name="emailAddress" placeholder="email address" ngModel required>
+       <input class="form-control" type="number" name="phoneNumber" placeholder="phone number" ngModel required>
+      <button [disabled]="!f.valid" class="btn btn-success my-3" type="submit">Add</button>
+    </form>
+  </div>
+  <app-customerItem *ngFor="let customer of customers | async" [customer]="customer"></app-customerItem>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,38 @@
+.overlay {
+    background-color: rgba(0, 0, 0, 0.548);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    form {
+        position: absolute;
+        display: flex;
+        flex-wrap: wrap;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 500px;
+        background-color: white;
+        padding: 10px;
+        label {
+            margin: 10px;
+        }
+        input,select {
+            margin-top: 10px;
+        }
+        button {
+            margin-top: 10px;
+        }
+        span {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: crimson;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+    }
+}

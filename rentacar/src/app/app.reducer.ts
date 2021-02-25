@@ -1,10 +1,17 @@
-import { ActionReducerMap } from "@ngrx/store"
-import * as fromVehicleReducer from "./vehicles/store/vehicle.reducer"
+import { ActionReducerMap, createFeatureSelector, createSelector } from "@ngrx/store";
+import * as fromVehicleReducer from "./vehicles/store/vehicle.reducer";
+import * as fromCustomerReducer from './customers/store/customer.reducer';
 
 export interface AppState {
-    vehicleList: fromVehicleReducer.VehicleState
+    vehicleList: fromVehicleReducer.VehicleState,
+    customerList: fromCustomerReducer.CustomerState
 }
 
 export const appreducers:ActionReducerMap<AppState> = {
-    vehicleList: fromVehicleReducer.VehicleReducer
+    vehicleList: fromVehicleReducer.VehicleReducer,
+    customerList: fromCustomerReducer.CustomerReducer
 }
+
+
+export const customerState = createFeatureSelector<fromCustomerReducer.CustomerState>('customerList');
+export const getCustomers = createSelector(customerState,fromCustomerReducer.getCustomerState);

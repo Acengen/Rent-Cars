@@ -1,0 +1,65 @@
+.vehicle {
+    display: flex;
+    flex-wrap: wrap;
+
+   
+}
+
+.vehicles {
+    .vehicles_header {
+        padding: 20px;
+        text-align: center;
+        p {
+            margin: 0 !important;
+            color: gray;
+            font-style: italic;
+        }
+    }
+    .add_btns {
+        padding: 10px 10px;
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.548);
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 999;
+
+            
+
+            form {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                width: 500px;
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                input,select {
+                    margin-top: 10px;
+                }
+                button {
+                    margin-top: 10px;
+                }
+                span {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    background-color: crimson;
+                    color: white;
+                    padding: 10px;
+                    cursor: pointer;
+                }
+
+                legend {
+                    font-size: 11px;
+                    text-transform: uppercase;
+                    color: rgba(220, 20, 60, 0.863);
+                }
+            }
+        }
+    }
+}

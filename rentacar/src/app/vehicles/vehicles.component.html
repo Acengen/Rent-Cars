@@ -1,3 +1,39 @@
-<p>
-  vehicles works!
-</p>
+<div class="vehicles">
+  <div class="vehicles_header">
+    <h1>Rent A Car</h1>
+    <p>"Rent it!"</p>
+  </div>
+  <div class="add_btns">
+    <button (click)="isActive = !isActive" class="btn btn-sm btn-success">+ add new</button>
+    <div *ngIf="isActive" class="overlay">
+      <form (ngSubmit)="addNewCar(f)" #f="ngForm">
+        <span (click)="isActive=false" >X</span>
+        <p>Create Form</p>
+        <input class="form-control" #brand="ngModel" type="text" name="brand" placeholder="car brand" ngModel required>
+        <legend *ngIf="!brand.valid">*Required</legend>
+        <input class="form-control" #constructionYear="ngModel" type="text" name="constructionYear" placeholder="year of construction" ngModel required>
+        <legend *ngIf="!constructionYear.valid">*Required</legend>
+        <input class="form-control" #model="ngModel" type="text" name="model" placeholder="model" ngModel required>
+        <legend *ngIf="!model.valid">*Required</legend>
+        <select class="form-control" name="vType" [(ngModel)]="defaultType" required>
+          <option *ngFor="let vTp of vType" [value]="vTp">{{vTp}}</option>
+        </select>
+        <input class="form-control" #picture="ngModel" type="text" name="picture" placeholder="picture(..copy url)" ngModel required>
+        <legend *ngIf="!picture.valid">*Required</legend>
+        <input class="form-control" #count="ngModel" type="number" name="count" placeholder="how in storage?" ngModel required>
+        <legend *ngIf="!count.valid">*1 number is req</legend>
+        <input class="form-control" #numberOfSeats="ngModel" type="number" name="numberOfSeats" placeholder="number of seats" ngModel required>
+        <legend *ngIf="!numberOfSeats.valid">*1 number is req</legend>
+        <input class="form-control" #pricePerDay="ngModel" type="number" name="pricePerDay" placeholder="Price/Day" ngModel required>
+        <legend *ngIf="!pricePerDay.valid">*1 number is req</legend>
+        <button [disabled]="!f.valid" type="submit" class="btn btn-dark">Add</button>
+      </form>
+    </div>
+  </div>
+  <div class="vehicle">
+    <app-vehicleitem *ngFor="let vehicle of vehicles" [vehicle]="vehicle"></app-vehicleitem>
+  </div>
+  <div class="vehicle-edit">
+    <router-outlet></router-outlet>
+  </div>
+</div>

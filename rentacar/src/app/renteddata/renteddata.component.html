@@ -1,5 +1,5 @@
-
 <div class="rented">
+  <p *ngIf="rented.length === 0" class="msg_no_files">No files.. X(</p>
   <div class="card" *ngFor="let rent of rented">
     <p (click)="deleteRental(rent.rentalId)" class="close">X</p>
     <div class="card-body">

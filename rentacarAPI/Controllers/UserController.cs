@@ -118,14 +118,6 @@ namespace rentacarAPI.Controllers
         {
              var customerFromRepo = await _repo.GetCustomer(id);
 
-            var rentalFromCustomer = await _context.Rentalevents.FirstOrDefaultAsync(r => r.CustomerId == id);
-
-            var vehicleRental = await _context.Vehicles.FirstOrDefaultAsync(v => v.Model == rentalFromCustomer.VehicleName);
-
-            var vehicleCountInRental = _context.Rentalevents.Where(r => r.VehicleName == vehicleRental.Model).Count();
-            
-            vehicleRental.Count += vehicleCountInRental;
-
              _context.Customers.Remove(customerFromRepo);
 
              await _context.SaveChangesAsync();

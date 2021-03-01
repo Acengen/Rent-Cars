@@ -17,19 +17,23 @@ import { appreducers } from './app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { VehicleEffects } from './vehicles/store/vehicle.effects';
 import { FormsModule } from '@angular/forms';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RenteddataComponent } from './renteddata/renteddata.component';
 
 const routes:Routes = [
+  {path:"",redirectTo:"/home",pathMatch:'full'},
   {path:"customers",component:CustomersComponent,children:[
     {path:"edit/:id",component:CustomerEditComponent}
   ]},
-  {path:"", component:VehiclesComponent, children:[
+  {path:"home", component:VehiclesComponent, children:[
     {path:":id", component:VehicleEditComponent}
   ]},
-  
+  {path:"rented", component:RenteddataComponent}
 ]
 
 @NgModule({
-  declarations: [			
+  declarations: [				
     AppComponent,
       CustomersComponent,
       VehiclesComponent,
@@ -37,7 +41,8 @@ const routes:Routes = [
       VehicleitemComponent,
       VehicleEditComponent,
       CustomerEditComponent,
-      CustomerItemComponent
+      CustomerItemComponent,
+      RenteddataComponent
    ],
   imports: [
     BrowserModule,
@@ -45,7 +50,9 @@ const routes:Routes = [
     FormsModule,
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     StoreModule.forRoot(appreducers),
-    EffectsModule.forRoot([VehicleEffects,CustomerEffects])
+    EffectsModule.forRoot([VehicleEffects,CustomerEffects]),
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

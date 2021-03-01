@@ -1,0 +1,23 @@
+.card {
+    position: relative;
+    margin: 10px;
+    .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 10px;
+        color: white;
+        cursor: pointer;
+        background-color: rgba(201, 16, 16, 0.582);
+    }
+    .card-body {
+        span {
+            font-size: 10px;
+            color: gray;
+            text-decoration: underline;
+        }
+        .customername,.vehiclename {
+            font-weight: bold;
+        }
+    }
+}

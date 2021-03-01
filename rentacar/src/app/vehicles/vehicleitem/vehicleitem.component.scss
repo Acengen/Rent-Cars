@@ -1,31 +1,56 @@
 .card {
-    max-width: 300px;
-    margin: 10px;
-    position: relative;
-    .count {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 10px;
-        font-weight: bold;
-        font-size: 10px;
-        text-decoration: underline;
-      
+  width: 300px;
+  margin: 10px;
+  position: relative;
+  .count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 10px;
+    text-decoration: underline;
+  }
+  .card-header {
+    p {
+      margin: 0 !important;
+      font-weight: bold;
     }
-    .card-header {
-        p {
-            margin:  0 !important;
-            font-weight: bold;
-        }
-    }
+  }
 
+  .card-body {
+    img {
+      width: 100%;
+      height: 200px;
+    }
+    span {
+      font-weight: bold;
+    }
+  }
+}
+@media (max-width: 990px) {
+  .card {
+    width: 200px;
+    font-size: 11px;
     .card-body {
-        img {
-            width: 100%;
-            height: 200px;
-        }
-        span {
-            font-weight: bold;
+      img {
+        height: 100px;
+      }
+    }
+  }
+}
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+    
+    .img_text {
+        display: flex;
+        .card-body {
+            img {
+                width: 100%;
+                height: 100%;
+            }
         }
     }
+  }
 }

@@ -2,17 +2,43 @@
     display: flex;
     flex-wrap: wrap;
 
+    @media(max-width:1008px) {
+        justify-content:space-evenly;
+    }
+
+    @media(max-width:470px) {
+        flex-direction: column;
+    }
    
 }
 
 .vehicles {
+    .rentalError {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        text-align: center;
+        background-color: rgb(172, 114, 8);
+        color: white;
+        padding: 20px;
+    }
+    .rental_event_btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 10px;
+    }
     .vehicles_header {
         padding: 20px;
-        text-align: center;
+        h1 {
+            text-align: center;
+        }
         p {
             margin: 0 !important;
             color: gray;
             font-style: italic;
+            text-align: center;
         }
     }
     .add_btns {
@@ -26,9 +52,6 @@
             bottom: 0;
             right: 0;
             z-index: 999;
-
-            
-
             form {
                 position: absolute;
                 top: 50%;
@@ -59,7 +82,16 @@
                     text-transform: uppercase;
                     color: rgba(220, 20, 60, 0.863);
                 }
+
+                @media(max-width:570px) {
+                    width: 400px;
+                }
+                @media(max-width:435px) {
+                    width: 300px;
+                }
             }
         }
     }
 }
+
+

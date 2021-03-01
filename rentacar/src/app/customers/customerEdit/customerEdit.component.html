@@ -1,5 +1,6 @@
 <div *ngIf="customer" class="overlay">
   <form (ngSubmit)="editCustomer(f)" #f="ngForm">
+    <span routerLink="/customers" >X</span>
     <p>Edit Customer</p>
     <label>Full name
       <input class="form-control" type="text" name="fullName" [(ngModel)]="customer.fullName">

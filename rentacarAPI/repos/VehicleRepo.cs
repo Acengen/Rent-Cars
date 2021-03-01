@@ -25,6 +25,18 @@ namespace rentacarAPI.repos
             return await _context.Customers.ToListAsync();
         }
 
+        public async Task<Rentalevent> GetRentalevent(int id)
+        {
+            return await _context.Rentalevents.FirstOrDefaultAsync(r => r.RentalId == id);
+        }
+
+        public async Task<IEnumerable<Rentalevent>> GetRentalevents()
+        {
+            var rentals =  await _context.Rentalevents.ToListAsync();
+
+            return rentals;
+        }
+
         public async Task<Vehicle> GetVehicle(int id)
         {
             return await _context.Vehicles.FirstOrDefaultAsync(v => v.VehicleId == id);

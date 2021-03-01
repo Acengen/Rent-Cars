@@ -13,6 +13,9 @@ namespace rentacarAPI.helpers
             
             CreateMap<Vehicle,VehicleToUpdateDto>();
             CreateMap<VehicleToUpdateDto,Vehicle>();
+
+            CreateMap<Rentalevent,rentalEventDto>();
+            CreateMap<rentalEventDto,Rentalevent>();
         }
     }
 }

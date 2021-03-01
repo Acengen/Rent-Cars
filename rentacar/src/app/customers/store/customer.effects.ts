@@ -34,5 +34,31 @@ export class CustomerEffects {
         )
     })
 
+    editCustomer$ = createEffect(() => {
+        return this.action$.pipe(
+            ofType(fromActions.EDIT_CUSTOMERS_START),
+            switchMap((resdata:fromActions.EditCustomerStart) => {
+                return this.http.put<Customer>("http://localhost:5000/user/customer/edit/" + resdata.payload.id,resdata.payload.customer).pipe(
+                    map(res => {
+                        return new fromActions.EditCustomerSuccess(res)
+                    })
+                )
+            })
+        )
+    })
+
+    deleteCustomer$ = createEffect(() => {
+        return this.action$.pipe(
+            ofType(fromActions.DELETE_CUSTOMERS_START),
+            switchMap((resdata:fromActions.DeleteCustomerStart) => {
+                return this.http.delete<Customer>("http://localhost:5000/user/customer/" + resdata.payload).pipe(
+                    map(res => {
+                        return new fromActions.DeleteCustomerSuccess()
+                    })
+                )
+            })
+        )
+    })
+
     constructor(private action$:Actions,private http:HttpClient) {}
 }

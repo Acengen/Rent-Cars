@@ -24,5 +24,15 @@
         label {
             width: 100%;
         }
+
+        span {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: crimson;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
     }
 }

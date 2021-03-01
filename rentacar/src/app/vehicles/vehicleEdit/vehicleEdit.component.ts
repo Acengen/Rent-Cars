@@ -32,8 +32,7 @@ export class VehicleEditComponent implements OnInit {
           if(!res){
             this.router.navigate(['/'])
           }
-          this.vehicle = JSON.parse(JSON.stringify(res))
-          
+          this.vehicle = res
          })
       }
     )

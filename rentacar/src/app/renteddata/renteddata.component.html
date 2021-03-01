@@ -1,0 +1,15 @@
+
+<div class="rented">
+  <div class="card" *ngFor="let rent of rented">
+    <p (click)="deleteRental(rent.rentalId)" class="close">X</p>
+    <div class="card-body">
+      <p>{{rent.startDate | date}} - {{rent.endDate | date}}</p>
+    </div>
+    <div class="card-body">
+      <span>CUSTOMER</span>
+      <p class="customername"> {{rent.customerName}}</p>
+      <span>VEHICLE MODEL</span>
+      <p class="vehiclename"> {{rent.vehicleName}}</p>
+    </div>
+  </div>
+</div>

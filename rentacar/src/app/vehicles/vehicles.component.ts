@@ -3,6 +3,7 @@ import * as fromAppReducer from './../app.reducer';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromVehicleActions from './store/vehicle.actions';
+import * as fromCustomerActions from '../customers/store/customer.actions';
 import { Vehicle } from './Vehicle';
 import { NgForm } from '@angular/forms';
 
@@ -16,24 +17,20 @@ export class VehiclesComponent implements OnInit {
   vType = ["economy","luxury","estate","SUV","cargo"];
   defaultType = "economy";
   isActive:boolean = false;
+  isRented:boolean = false;
 
-  createVehicle:string;
+  rentalError:string;
   constructor(private store:Store<fromAppReducer.AppState>) { }
 
   ngOnInit() {
     this.store.dispatch(new fromVehicleActions.GetVehicleStart());
+    this.store.dispatch(new fromCustomerActions.GetCustomerStart());
     this.store.select('vehicleList').pipe(map(res => res)).subscribe(
       res => {
-        if(res.vehicle !== null){
           this.vehicles = res.vehicle
-        }
-        if(res.createUserFail !== null){
-           for(let key in res.createUserFail){
-             console.log(res.createUserFail[key].toString())
-           }
-        }
       }
-    )
+    );
+    
   }
 
   addNewCar(f:NgForm){

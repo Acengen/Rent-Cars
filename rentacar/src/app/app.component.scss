@@ -14,5 +14,9 @@
     &:hover {
       color: black;
     }
+    @media(max-width:413px) {
+    display: block;
+    }
   }
+
 }

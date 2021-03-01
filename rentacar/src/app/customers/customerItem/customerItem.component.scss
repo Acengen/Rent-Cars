@@ -5,4 +5,15 @@
     border-left: none !important;
     border-right: none !important;
     margin-bottom: 10px;
+
+    .card-body {
+        h4 {
+            span {
+                background-color: crimson;
+                padding: 10px;
+                color: white;
+                border-radius: 50%;
+            }
+        }
+    }
 }

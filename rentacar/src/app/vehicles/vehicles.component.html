@@ -1,8 +1,11 @@
 <div class="vehicles">
+  <button (click)="isRented=!isRented" class="btn btn-success rental_event_btn">Rent a car</button>
   <div class="vehicles_header">
     <h1>Rent A Car</h1>
     <p>"Rent it!"</p>
+    <app-rentalEvent *ngIf="isRented" [vehicles]="vehicles"></app-rentalEvent>
   </div>
+  <p class="rentalError" *ngIf="rentalError">{{rentalError}}</p>
   <div class="add_btns">
     <button (click)="isActive = !isActive" class="btn btn-sm btn-success">+ add new</button>
     <div *ngIf="isActive" class="overlay">

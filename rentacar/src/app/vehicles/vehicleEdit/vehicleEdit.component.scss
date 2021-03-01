@@ -8,17 +8,13 @@
     z-index: 999;
     form {
         position: absolute;
-        display: flex;
-        flex-wrap: wrap;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
         width: 500px;
         background-color: white;
-        padding: 10px;
-        label {
-            margin: 10px;
-        }
+        padding: 20px;
+        border-radius: 10px;
         input,select {
             margin-top: 10px;
         }
@@ -33,6 +29,17 @@
             color: white;
             padding: 10px;
             cursor: pointer;
+        }
+        
+
+        @media(max-width:570px) {
+            width: 400px;
+        }
+        @media(max-width:435px) {
+           max-width: 350px;
+           label {
+               display: contents;
+           }
         }
     }
 }

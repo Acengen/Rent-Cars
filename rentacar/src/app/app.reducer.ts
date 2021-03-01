@@ -14,4 +14,8 @@ export const appreducers:ActionReducerMap<AppState> = {
 
 
 export const customerState = createFeatureSelector<fromCustomerReducer.CustomerState>('customerList');
+export const vehicleState = createFeatureSelector<fromVehicleReducer.VehicleState>('vehicleList');
 export const getCustomers = createSelector(customerState,fromCustomerReducer.getCustomerState);
+export const getVehicle = createSelector(vehicleState,fromVehicleReducer.getVehicles);
+export const getMsgForRentalSuccess = createSelector(vehicleState,fromVehicleReducer.getloading);
+export const getRentalError = createSelector(vehicleState,fromVehicleReducer.getError);

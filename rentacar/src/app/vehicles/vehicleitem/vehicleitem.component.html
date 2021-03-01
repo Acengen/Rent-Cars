@@ -3,15 +3,17 @@
   <div class="card-header">
     <p>{{vehicle.model}} {{vehicle.brand}}</p>
   </div>
-  <div class="card-body">
-    <img src="{{vehicle.picture}}" alt="v_image">
-  </div>
-  <div class="card-body">
-    <p><span>type</span>: {{vehicle.vType}}</p>
-    <p><span>year</span>: {{vehicle.constructionYear}}</p>
-    <p><span>seats</span>: {{vehicle.numberOfSeats}}</p>
-    <p><span>price</span>: {{vehicle.pricePerDay}}$/day</p>
-    <button [routerLink]="['/',vehicle.vehicleId]" class="btn btn-sm btn-primary">edit</button>
-    <button (click)="deleteCar(vehicle.vehicleId)" class="btn btn-sm btn-danger">remove</button>
+  <div class="img_text">
+    <div class="card-body">
+      <img src="{{vehicle.picture}}" alt="v_image">
+    </div>
+    <div class="card-body">
+      <p><span>type</span>: {{vehicle.vType}}</p>
+      <p><span>year</span>: {{vehicle.constructionYear}}</p>
+      <p><span>seats</span>: {{vehicle.numberOfSeats}}</p>
+      <p><span>price</span>: {{vehicle.pricePerDay}}$/day</p>
+      <button [routerLink]="['/home',vehicle.vehicleId]" class="btn btn-sm btn-primary">edit</button>
+      <button (click)="deleteCar(vehicle.vehicleId)" class="btn btn-sm btn-danger">remove</button>
+    </div>
   </div>
 </div>

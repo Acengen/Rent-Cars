@@ -54,6 +54,12 @@ namespace rentacarAPI.Models
                     .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.Property(e => e.PhoneNumber).HasColumnName("phone_number");
+
+                entity.Property(e => e.Vip)
+                    .HasColumnType("enum('Yes','No')")
+                    .HasColumnName("vip")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
             });
 
             modelBuilder.Entity<Rentalevent>(entity =>
@@ -68,6 +74,12 @@ namespace rentacarAPI.Models
                 entity.Property(e => e.CustomerName)
                     .HasColumnType("varchar(255)")
                     .HasColumnName("customer_name")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.Discount)
+                    .HasColumnType("varchar(255)")
+                    .HasColumnName("discount")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
 
@@ -105,9 +117,7 @@ namespace rentacarAPI.Models
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
 
-                entity.Property(e => e.Count)
-                    .HasColumnName("count")
-                    .HasDefaultValueSql("'0'");
+                entity.Property(e => e.Count).HasColumnName("count");
 
                 entity.Property(e => e.Model)
                     .IsRequired()

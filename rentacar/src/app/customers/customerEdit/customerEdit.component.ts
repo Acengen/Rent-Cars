@@ -36,7 +36,7 @@ export class CustomerEditComponent implements OnInit {
   }
 
   editCustomer(f:NgForm){
-    
+    this.store.dispatch(new fromCustomerActions.EditCustomerStart({id:this.customerId,customer:f.value}))
   } 
 
 }

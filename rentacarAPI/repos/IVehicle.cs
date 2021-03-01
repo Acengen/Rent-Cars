@@ -11,5 +11,8 @@ namespace rentacarAPI.repos
 
          Task<Customer> GetCustomer(int id);
          Task<Vehicle> GetVehicle(int id);
+
+         Task<IEnumerable<Rentalevent>> GetRentalevents();
+         Task<Rentalevent> GetRentalevent(int id);
     }
 }

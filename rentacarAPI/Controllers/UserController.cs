@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -117,34 +118,101 @@ namespace rentacarAPI.Controllers
         {
              var customerFromRepo = await _repo.GetCustomer(id);
 
+             var rentalToDelete = _context.Rentalevents.Where(r => r.CustomerName == customerFromRepo.FullName);
+
              _context.Customers.Remove(customerFromRepo);
+
+             _context.Rentalevents.RemoveRange(rentalToDelete);
 
              await _context.SaveChangesAsync();
 
              return NoContent();
         }
 
-        [HttpPost("rentalEvent/{cid}/{vid}")]
-        public async Task<IActionResult> RentACar(int cid, int vid, Rentalevent rentalevent)
+        //Get rentals
+        [HttpGet("rentalEvent")]
+        public async Task<IActionResult> GetRental()
         {
-            var customerFromRepo = await _repo.GetCustomer(cid);
-            var vehiclerepo = await _repo.GetVehicle(vid);
+            var rentalEvent = await _repo.GetRentalevents();
 
+            return Ok(rentalEvent);
+        }
+
+        //Delete rental by id
+        [HttpDelete("rentalEvent/{id}")]
+        public async Task<IActionResult> DeleteRental(int id)
+        {
+            var rentalfromrepo = await _repo.GetRentalevent(id);
+            var rentalList = await _repo.GetRentalevents();
+            var customer = await _context.Customers.FirstOrDefaultAsync(c => c.FullName == rentalfromrepo.CustomerName);
+            var vehicleInRental = await _context.Vehicles.FirstOrDefaultAsync(v => v.Model == rentalfromrepo.VehicleName);
+            
+            if(rentalList.Where(r => r.CustomerName == customer.FullName).Count() <= 4)
+            {
+                customer.Vip = "No";
+            }else {
+                customer.Vip = "Yes";
+            }
+
+
+            vehicleInRental.Count++;
+
+            _context.Rentalevents.Remove(rentalfromrepo);
+
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        //Create rental event
+        [HttpPost("rentalEvent/{cname}/{vname}")]
+        public async Task<IActionResult> RentACar(string cname, string vname, Rentalevent rentalevent)
+        {
+            
+            var customerName = await _context.Customers.FirstOrDefaultAsync(c => c.FullName == cname);
+            var vehiclerepo = await _context.Vehicles.FirstOrDefaultAsync(v => v.Model == vname);
+            var rental = await _context.Rentalevents.ToListAsync();
+
+            
 
             if (vehiclerepo.Count < 1)
             {
-                return BadRequest("No vehicles of that tipe in a store!");
+                return BadRequest("vehicle is not in a store!");
             }
 
-            rentalevent.CustomerName = customerFromRepo.FullName;
-            rentalevent.VehicleName = vehiclerepo.Brand;
+           
+
+            var d = rentalevent.EndDate - rentalevent.StartDate;
+
+            if(d.TotalDays > 3 && d.TotalDays <= 5){
+                rentalevent.Discount = "5%";
+            }
+
+            if(d.TotalDays > 5 && d.TotalDays <= 10){
+                rentalevent.Discount = "7%";
+            }
+
+            if(d.TotalDays > 10){
+                rentalevent.Discount = "10%";
+            }
+            rentalevent.CustomerName = customerName.FullName;
+            rentalevent.VehicleName = vehiclerepo.Model;
             vehiclerepo.Count--;
 
+            if(rental.Where(r => r.CustomerName == customerName.FullName).Count() >= 3)
+            {
+                customerName.Vip = "Yes";
+               
+            }
 
             await _context.Rentalevents.AddAsync(rentalevent);
             await _context.SaveChangesAsync();
 
-            return Ok(rentalevent);
+            return Ok(new {
+                rentalevent,
+                vehiclerepo
+            });
 
         }
 

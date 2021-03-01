@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nu/YggmBBrz0NAP/SP/hCjenQGXzw5UngcLvPDJcdCXdhNOL+QPRqEqjVo5iqjL7K0wl3DgriGi24vv0Uz/rAg==",
+  "dgSpecHash": "RychAwSPEVyMEHE5tbRnHPDsaQTXi2/vff8RGV+7Pwqt2xzfQG3B9sQNg9fgtAu2cZ6iqpRZ9bEr148kNaXk/Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\38160\\Desktop\\rent\\rentacarAPI\\rentacarAPI.csproj",
+  "projectFilePath": "C:\\Users\\38160\\Desktop\\rentcopy\\rentacarAPI\\rentacarAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\38160\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\38160\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

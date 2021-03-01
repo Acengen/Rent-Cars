@@ -33,6 +33,7 @@ namespace rentacarAPI
             services.AddScoped<IVehicle,VehicleRepo>();
             services.AddAutoMapper(typeof(Customer).Assembly);
             services.AddAutoMapper(typeof(Vehicle).Assembly);
+            services.AddAutoMapper(typeof(Rentalevent).Assembly);
             services.AddDbContext<rentcarsContext>(opt => opt.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
         }
 

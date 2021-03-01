@@ -69,7 +69,11 @@ namespace rentacarAPI.Models
 
                 entity.ToTable("rentalevent");
 
+                entity.HasIndex(e => e.CustomerId, "customer_id");
+
                 entity.Property(e => e.RentalId).HasColumnName("rental_id");
+
+                entity.Property(e => e.CustomerId).HasColumnName("customer_id");
 
                 entity.Property(e => e.CustomerName)
                     .HasColumnType("varchar(255)")
@@ -96,6 +100,12 @@ namespace rentacarAPI.Models
                     .HasColumnName("vehicle_name")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Rentalevents)
+                    .HasForeignKey(d => d.CustomerId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("rentalevent_ibfk_1");
             });
 
             modelBuilder.Entity<Vehicle>(entity =>

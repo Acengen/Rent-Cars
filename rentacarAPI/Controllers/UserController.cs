@@ -118,11 +118,15 @@ namespace rentacarAPI.Controllers
         {
              var customerFromRepo = await _repo.GetCustomer(id);
 
-             var rentalToDelete = _context.Rentalevents.Where(r => r.CustomerName == customerFromRepo.FullName);
+            var rentalFromCustomer = await _context.Rentalevents.FirstOrDefaultAsync(r => r.CustomerId == id);
+
+            var vehicleRental = await _context.Vehicles.FirstOrDefaultAsync(v => v.Model == rentalFromCustomer.VehicleName);
+
+            var vehicleCountInRental = _context.Rentalevents.Where(r => r.VehicleName == vehicleRental.Model).Count();
+            
+            vehicleRental.Count += vehicleCountInRental;
 
              _context.Customers.Remove(customerFromRepo);
-
-             _context.Rentalevents.RemoveRange(rentalToDelete);
 
              await _context.SaveChangesAsync();
 
@@ -174,14 +178,13 @@ namespace rentacarAPI.Controllers
             var vehiclerepo = await _context.Vehicles.FirstOrDefaultAsync(v => v.Model == vname);
             var rental = await _context.Rentalevents.ToListAsync();
 
-            
+           
 
             if (vehiclerepo.Count < 1)
             {
                 return BadRequest("vehicle is not in a store!");
             }
 
-           
 
             var d = rentalevent.EndDate - rentalevent.StartDate;
 
@@ -196,8 +199,10 @@ namespace rentacarAPI.Controllers
             if(d.TotalDays > 10){
                 rentalevent.Discount = "10%";
             }
+
             rentalevent.CustomerName = customerName.FullName;
             rentalevent.VehicleName = vehiclerepo.Model;
+            rentalevent.CustomerId = customerName.CustomerId;
             vehiclerepo.Count--;
 
             if(rental.Where(r => r.CustomerName == customerName.FullName).Count() >= 3)

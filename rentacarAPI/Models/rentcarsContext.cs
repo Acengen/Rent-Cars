@@ -71,6 +71,8 @@ namespace rentacarAPI.Models
 
                 entity.HasIndex(e => e.CustomerId, "customer_id");
 
+                entity.HasIndex(e => e.VehicleId, "vehicle_id");
+
                 entity.Property(e => e.RentalId).HasColumnName("rental_id");
 
                 entity.Property(e => e.CustomerId).HasColumnName("customer_id");
@@ -95,6 +97,8 @@ namespace rentacarAPI.Models
                     .HasColumnType("date")
                     .HasColumnName("startDate");
 
+                entity.Property(e => e.VehicleId).HasColumnName("vehicle_id");
+
                 entity.Property(e => e.VehicleName)
                     .HasColumnType("varchar(255)")
                     .HasColumnName("vehicle_name")
@@ -106,6 +110,12 @@ namespace rentacarAPI.Models
                     .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("rentalevent_ibfk_1");
+
+                entity.HasOne(d => d.Vehicle)
+                    .WithMany(p => p.Rentalevents)
+                    .HasForeignKey(d => d.VehicleId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("rentalevent_ibfk_2");
             });
 
             modelBuilder.Entity<Vehicle>(entity =>

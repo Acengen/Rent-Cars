@@ -7,6 +7,11 @@ namespace rentacarAPI.Models
 {
     public partial class Vehicle
     {
+        public Vehicle()
+        {
+            Rentalevents = new HashSet<Rentalevent>();
+        }
+
         public int VehicleId { get; set; }
         public string VType { get; set; }
         public string Brand { get; set; }
@@ -16,5 +21,7 @@ namespace rentacarAPI.Models
         public string Picture { get; set; }
         public int PricePerDay { get; set; }
         public int? Count { get; set; }
+
+        public virtual ICollection<Rentalevent> Rentalevents { get; set; }
     }
 }

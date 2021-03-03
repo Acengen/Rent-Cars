@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -116,14 +117,16 @@ namespace rentacarAPI.Controllers
         [HttpDelete("customer/{id}")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {
-             var customerFromRepo = await _repo.GetCustomer(id);
+            var customerFromRepo = await _repo.GetCustomer(id);
 
-             _context.Customers.Remove(customerFromRepo);
+            _context.Customers.Remove(customerFromRepo);
 
-             await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
-             return NoContent();
+            return NoContent();
         }
+
+        
 
         //Get rentals
         [HttpGet("rentalEvent")]
@@ -195,6 +198,7 @@ namespace rentacarAPI.Controllers
             rentalevent.CustomerName = customerName.FullName;
             rentalevent.VehicleName = vehiclerepo.Model;
             rentalevent.CustomerId = customerName.CustomerId;
+            rentalevent.VehicleId = vehiclerepo.VehicleId;
             vehiclerepo.Count--;
 
             if(rental.Where(r => r.CustomerName == customerName.FullName).Count() >= 3)

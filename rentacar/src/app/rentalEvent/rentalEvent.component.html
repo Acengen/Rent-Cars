@@ -2,14 +2,20 @@
 <p *ngIf="rentedError" class="rentalError text-white bg-danger text-center p-3">{{rentedError}}</p>
 <p *ngIf="rentalSuccessMSg" class="rentalSuccess text-white bg-success text-center p-3">{{rentalSuccessMSg}}</p>
 <form (ngSubmit)="rentIt(f)" #f="ngForm">
-  <label>Start
-    <input class="form-control" #startDate="ngModel" type="date" name="startDate" ngModel required >
-  </label>
-  <p class="text-danger" *ngIf="!startDate.valid && startDate.touched">*Required</p>
-  <label>End
-    <input class="form-control" #endDate="ngModel" type="date" name="endDate" ngModel required >
-  </label>
-  <p class="text-danger" *ngIf="!endDate.valid && endDate.touched">*Required</p>
+  <div class="form-row">
+   <div class="form-group col-md-6">
+    <label>Start
+      <input class="form-control" #startDate="ngModel" type="date" name="startDate" ngModel required >
+      <p class="text-danger" *ngIf="!startDate.valid && startDate.touched">*Required</p>
+    </label>
+   </div>
+    <div class="form-group col-md-6">
+      <label>End
+        <input class="form-control" #endDate="ngModel" type="date" name="endDate" ngModel required >
+        <p class="text-danger" *ngIf="!endDate.valid && endDate.touched">*Required</p>
+      </label>
+    </div>
+  </div>
   <label>Customers:</label>
   <select class="form-control" #customerName="ngModel" name="customerName" ngModel required>
     <option *ngFor="let cust of customers" [value]="cust.fullName">{{cust.fullName}}</option>

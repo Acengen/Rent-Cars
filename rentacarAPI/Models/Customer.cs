@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -19,7 +18,6 @@ namespace rentacarAPI.Models
         public int? PhoneNumber { get; set; }
         public string Vip { get; set; }
 
-        
         public virtual ICollection<Rentalevent> Rentalevents { get; set; }
     }
 }

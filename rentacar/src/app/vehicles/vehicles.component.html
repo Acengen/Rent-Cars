@@ -11,6 +11,7 @@
     <div *ngIf="isActive" class="overlay">
       <form (ngSubmit)="addNewCar(f)" #f="ngForm">
         <span (click)="isActive=false" >X</span>
+        <p *ngIf="isAdded" class="bg-success text-center p-3">Success</p>
         <p>Create Form</p>
         <input class="form-control" #brand="ngModel" type="text" name="brand" placeholder="car brand" ngModel required>
         <legend *ngIf="!brand.valid">*Required</legend>
@@ -23,7 +24,7 @@
         </select>
         <input class="form-control" #picture="ngModel" type="text" name="picture" placeholder="picture(..copy url)" ngModel required>
         <legend *ngIf="!picture.valid">*Required</legend>
-        <input class="form-control" #count="ngModel" type="number" name="count" placeholder="how in storage?" ngModel required>
+        <input class="form-control" #count="ngModel" type="number" name="count" placeholder="storage capicity" ngModel required>
         <legend *ngIf="!count.valid">*1 number is req</legend>
         <input class="form-control" #numberOfSeats="ngModel" type="number" name="numberOfSeats" placeholder="number of seats" ngModel required>
         <legend *ngIf="!numberOfSeats.valid">*1 number is req</legend>

@@ -17,6 +17,7 @@ export class VehicleitemComponent implements OnInit {
   }
 
   deleteCar(id:number) {
+    if(confirm("Are you sure?"))
     this.store.dispatch(new fromVehicleActions.DeleteVehicleStart(id));
   }
 }

@@ -36,10 +36,14 @@
             width: 400px;
         }
         @media(max-width:435px) {
-           max-width: 350px;
+           width: 350px;
            label {
                display: contents;
            }
         }
+        @media(max-width:390px) {
+            width: 300px;
+           
+         }
     }
 }

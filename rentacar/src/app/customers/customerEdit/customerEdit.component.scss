@@ -34,5 +34,8 @@
             padding: 10px;
             cursor: pointer;
         }
+        @media (max-width: 387px) {
+            width: 300px;
+        }
     }
 }

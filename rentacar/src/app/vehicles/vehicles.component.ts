@@ -18,6 +18,7 @@ export class VehiclesComponent implements OnInit {
   defaultType = "economy";
   isActive:boolean = false;
   isRented:boolean = false;
+  isAdded:boolean = false;
 
   rentalError:string;
   constructor(private store:Store<fromAppReducer.AppState>) { }
@@ -34,6 +35,10 @@ export class VehiclesComponent implements OnInit {
   }
 
   addNewCar(f:NgForm){
+    this.isAdded = true;
+    setTimeout(() => {
+      this.isAdded = false;
+    }, 1000);
     this.store.dispatch(new fromVehicleActions.CreateVehicleStart(f.value))
   }
 

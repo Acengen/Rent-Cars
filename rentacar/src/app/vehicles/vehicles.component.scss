@@ -3,7 +3,10 @@
     flex-wrap: wrap;
 
     @media(max-width:1008px) {
-        justify-content:space-evenly;
+        justify-content:space-between;
+    }
+    @media(max-width:710px) {
+        flex-direction: column;
     }
 
     @media(max-width:470px) {
@@ -31,9 +34,8 @@
     }
     .vehicles_header {
         padding: 20px;
-        background-image: url('https://rentacarubeogradu.rs/wp-content/uploads/2019/07/rent-a-car-beograd.png');
-        background-repeat: no-repeat;
-        background-size: contain;
+        
+       
        
         
         h1 {
